@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "375225499066",
+    "project_id": "zero-fats",
+    "storage_bucket": "zero-fats.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:375225499066:android:a774da125db6403c2db183",
+        "android_client_info": {
+          "package_name": "com.example.zerofats"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "375225499066-66ounbp2bgoe2co26m2jerf5pbunnsqu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZB_58ezE6ngwBtGb58l6lOy74mQnh-yE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "375225499066-66ounbp2bgoe2co26m2jerf5pbunnsqu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

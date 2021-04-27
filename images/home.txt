@@ -1,0 +1,14 @@
+1. Home 
+- color: white
+- size: 36
+
+2. الارقام لونها ابيض و 24
+
+3. BMI - Weight
+- color: green
+- size: 14
+
+4. Exercise - doctor - gym - healthcenter - challenge - comunity - measure - restaurant
+- color : dark blue
+- size : 14
+
