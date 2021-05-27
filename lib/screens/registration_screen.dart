@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:zerofats/models/calculate_bmi.dart';
 import 'package:zerofats/models/user_data.dart';
 import 'package:zerofats/services/addUser.dart';
 import 'package:zerofats/widgets/inputText.dart';
@@ -19,6 +20,7 @@ class RegistrationScreen extends StatefulWidget {
 class _RegistrationScreenState extends State<RegistrationScreen> {
   final nameHolder1= TextEditingController();
   final _addUser = AddUser();
+  final bmiCalc = CalculateBMI();
   final _auth = FirebaseAuth.instance;
   bool showSpinner = false;
   String fName , lName , email , password , confirmPass ;
@@ -253,6 +255,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     onPressed: ()async{
                       // Register success and go to home screen
                       try {
+                        double userBmi = bmiCalc.calculateYourBmi(weight , height);
                         final newUser = await _auth
                             .createUserWithEmailAndPassword(
                             email: email, password: password);
@@ -267,7 +270,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               weight: weight,
                               email: email,
                               id: _auth.currentUser.uid,
-                              bmi: null ,
+                              bmi:  userBmi,
+                              bmiCategory: bmiCalc.bmiCategory(userBmi),
                               steps: null,
                           ),
                           );

@@ -12,6 +12,7 @@ const kUserSteps = 'Steps';
 const kUserId = 'UserID';
 const kUserWeight='Weight';
 const kUserName = 'name';
+const KUserBmiCategory = 'bmiCategory';
 
 const KTextFieldDecoration = InputDecoration(
   hintText: 'Enter a value',

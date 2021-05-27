@@ -15,6 +15,7 @@ class AddUser {
       kUserId : data.id,
       kUserBMI : data.bmi,
       kUserSteps : data.steps,
+      KUserBmiCategory: data.bmiCategory,
     });
   }
 

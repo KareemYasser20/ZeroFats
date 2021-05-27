@@ -1,22 +1,26 @@
 import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:zerofats/models/home_card_data.dart';
+import 'package:zerofats/models/user_data.dart';
 import 'package:zerofats/screens/exercise_screen.dart';
 import 'package:zerofats/screens/home_card.dart';
+import 'package:zerofats/services/addUser.dart';
 import 'package:zerofats/widgets/homeBarColumn.dart';
 
 class HomeScreen extends StatefulWidget {
 
   static const String id = 'home_screen';
 
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
+  final _addUser = AddUser();
 
   @override
   Widget build(BuildContext context) {
@@ -136,46 +140,3 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-
-
-//  void onStepCount(StepCount event) {
-//     print(event);
-//     print(_steps);
-//     setState(() {
-//       _steps = event.steps.toString();
-//       print('steps = $_steps');
-//     });
-//   }
-//
-//   void onPedestrianStatusChanged(PedestrianStatus event) {
-//     print('hi event $event');
-//     setState(() {
-//       _status = event.status;
-//     });
-//   }
-//
-//   void onPedestrianStatusError(error) {
-//     print('onPedestrianStatusError: $error');
-//     setState(() {
-//       _status = 'Pedestrian Status not available';
-//     });
-//     print(_status);
-//   }
-//
-//   void onStepCountError(error) {
-//     print('onStepCountError: $error');
-//     setState(() {
-//       _steps = 'Step Count not available';
-//     });
-//   }
-//
-//   Future<void> initPlatformState() async {
-//     _pedestrianStatusStream = await Pedometer.pedestrianStatusStream;
-//     _stepCountStream = await Pedometer.stepCountStream;
-//
-//     // _pedestrianStatusStream.listen(onPedestrianStatusChanged).onError(onPedestrianStatusError);
-//     _stepCountStream.listen(onStepCount).onError(onStepCountError);
-//
-//     if (!mounted) return;
-//   }
-
