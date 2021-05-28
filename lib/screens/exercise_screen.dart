@@ -27,7 +27,7 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
     var body=rep.body;
 
     var decodeJson=jsonDecode(body);
-    exerciseHub=ExerciseHub.fromJson(decodeJson);
+     exerciseHub= ExerciseHub.fromJson(decodeJson);
     setState(() {
     });
 

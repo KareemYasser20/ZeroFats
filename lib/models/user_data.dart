@@ -6,7 +6,7 @@ class UserData {
   String email;
   double bmi;
   int weight;
-  int steps;
+  int steps = 0;
   int height;
   String id;
   String bmiCategory;

@@ -1,13 +1,11 @@
-import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:zerofats/models/home_card_data.dart';
-import 'package:zerofats/models/user_data.dart';
 import 'package:zerofats/screens/exercise_screen.dart';
 import 'package:zerofats/screens/home_card.dart';
-import 'package:zerofats/services/addUser.dart';
 import 'package:zerofats/widgets/homeBarColumn.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -20,7 +18,31 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final _addUser = AddUser();
+
+  String returnSteps , returnWeight , returnBmi;
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  List<DocumentSnapshot> test;
+  Future<void> getUser() async {
+    CollectionReference collectionReference =FirebaseFirestore.instance.collection('Users');
+    await collectionReference.where("UserID", isEqualTo: auth.currentUser.uid).get().then((value) {
+      test = value.docs;
+    });
+    setState(() {
+     returnSteps =  test[0].data()['Steps'].toString();
+     returnWeight = test[0].data()['Weight'].toString();
+     returnBmi = test[0].data()['BMi'].toString();
+    });
+    // print('test values step= : $returnSteps');
+    // print('test values we = : $returnWeight');
+    // print('test values bmi = : $returnBmi');
+    // print('test len = : ${test.length}');
+  }
+
+  @override
+  void initState() {
+    getUser();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -92,29 +114,31 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 90.0,
               child: Padding(
                 padding: const EdgeInsets.only(top:18.0 , right: 20.0 , left: 20.0),
-                child: Row(
-                   mainAxisAlignment: MainAxisAlignment.spaceBetween, //Center Row contents horizontally,
-                   crossAxisAlignment: CrossAxisAlignment.center, //Center Row contents vertically,
-                  children: <Widget>[
+                child:  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
 
-                    HomeBarColumn(
-                      textValue: '0',
-                      text: 'Steps',
+                        HomeBarColumn(
+                          textValue: returnSteps ?? '0',
+                          text: 'Steps',
+                        ),
+
+                        HomeBarColumn(
+                          textValue: returnWeight ?? '0',
+                          text: 'Weight',
+                        ),
+
+                        HomeBarColumn(
+                          textValue: returnBmi ?? '0',
+                          text: 'BMI',
+                        ),
+                      ],
                     ),
 
-                    HomeBarColumn(
-                      textValue: '120',
-                      text: 'Weight',
-                    ),
-
-                    HomeBarColumn(
-                      textValue: '120',
-                      text: 'BMI',
-                    ),
-                  ],
                 ),
-              ),
-            ),
+                ),
+
 
             SizedBox(height: 10.0,),
 

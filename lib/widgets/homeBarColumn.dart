@@ -18,7 +18,7 @@ class HomeBarColumn extends StatelessWidget {
             fontSize: 24.0,
           ),
         ),
-        SizedBox(height: 8.0,),
+        // SizedBox(height: 4.0,),
         Text(
           text,
           style: TextStyle(

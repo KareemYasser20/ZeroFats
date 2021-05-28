@@ -14,7 +14,7 @@ class AddUser {
       kUserEmail : data.email ,
       kUserId : data.id,
       kUserBMI : data.bmi,
-      kUserSteps : data.steps,
+      kUserSteps : 0,
       KUserBmiCategory: data.bmiCategory,
     });
   }
