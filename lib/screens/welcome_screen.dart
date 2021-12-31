@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zerofats/screens/login_screen.dart';
 import 'package:zerofats/screens/registration_screen.dart';
-
 import '../constants.dart';
 
 class WelcomeScreen extends StatelessWidget {

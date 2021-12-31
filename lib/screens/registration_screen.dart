@@ -38,6 +38,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               image: AssetImage('images/SignupBackground.png'),
               fit: BoxFit.cover),
         ),
+
         child: SingleChildScrollView(
           child: SafeArea(
             child: Column(
@@ -60,6 +61,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       TextFields(
+
                           onChanged: (newValue){
                           fName = newValue;
                           // print(F_name);
