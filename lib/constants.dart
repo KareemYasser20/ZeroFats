@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 const kDarkBlueColor = Color(0xFF2F4858);
+const KGreenColor = Color(0xFF66BB6A);
 const kUserCollection = 'Users';
 const kUserBMI = 'BMi';
 const kUserBirthYear ='BirthYear';

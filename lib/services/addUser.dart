@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:zerofats/constants.dart';
-import 'package:zerofats/models/user_data.dart';
+import 'package:zerofats/models/users/user_data.dart';
 
 class AddUser {
   final FirebaseFirestore _fireStore = FirebaseFirestore.instance;

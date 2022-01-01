@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zerofats/models/exercise_api_data.dart';
-import 'package:zerofats/screens/exercise_screen.dart';
+import 'package:zerofats/modules/exercise/exercise_screen.dart';
 
 class ExerciseDetailsScreen extends StatelessWidget {
 

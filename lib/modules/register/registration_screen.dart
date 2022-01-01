@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:zerofats/models/calculate_bmi.dart';
-import 'package:zerofats/models/user_data.dart';
+import 'package:zerofats/models/users/user_data.dart';
 import 'package:zerofats/services/addUser.dart';
 import 'package:zerofats/widgets/inputText.dart';
 import 'package:zerofats/widgets/textFieldInput.dart';
-import 'home_screen.dart';
+import 'package:zerofats/modules/home/home_screen.dart';
 
 User loggedInUser;
 
