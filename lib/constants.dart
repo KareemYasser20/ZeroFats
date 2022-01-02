@@ -20,7 +20,7 @@ const KTextFieldDecoration = InputDecoration(
   filled: true,
   fillColor: Colors.white,
   contentPadding:
-  EdgeInsets.only(left: 14.0, bottom: 8.0, top: 8.0 , right: 14.0),
+  EdgeInsets.symmetric(vertical: 14.0, horizontal: 8.0),
   border: OutlineInputBorder(
     borderRadius: BorderRadius.all(Radius.circular(32.0)),
   ),

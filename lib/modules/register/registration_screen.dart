@@ -4,9 +4,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:zerofats/models/calculate_bmi.dart';
 import 'package:zerofats/models/users/user_data.dart';
 import 'package:zerofats/services/addUser.dart';
-import 'package:zerofats/widgets/inputText.dart';
-import 'package:zerofats/widgets/textFieldInput.dart';
+import 'package:zerofats/shared/components/components.dart';
+import 'package:zerofats/shared/components/inputText.dart';
+import 'package:zerofats/shared/components/textFieldInput.dart';
 import 'package:zerofats/modules/home/home_screen.dart';
+
+import '../../constants.dart';
 
 User loggedInUser;
 
@@ -60,6 +63,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
+
+
+
                       TextFields(
 
                           onChanged: (newValue){
@@ -239,61 +245,52 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
                 SizedBox(height: 10.0,),
 
-                Container(
-                  width: 130.0,
-                  height: 40.0,
-                  child: RaisedButton(
-                    textColor: Colors.white,
-                    color: Colors.green.shade400,
-                    child: Text("Register",
-                      style: TextStyle(
-                        fontSize: 24.0,
-                      ),
-
-                    ),
-                    shape: new RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(35.0),
-                    ),
-                    onPressed: ()async{
-                      // Register success and go to home screen
-                      try {
-                        double userBmi = bmiCalc.calculateYourBmi(weight , height);
-                        final newUser = await _auth
-                            .createUserWithEmailAndPassword(
-                            email: email, password: password);
-                        print('before if $newUser');
-                        if (newUser != null) {
-                          _addUser.addUser(UserData(
-                              firstName : fName ,
-                              lastName: lName ,
-                              gender: select,
-                              yearOfBirth: birthYear,
-                              height: height,
-                              weight: weight,
-                              email: email,
-                              id: _auth.currentUser.uid,
-                              bmi:  userBmi,
-                              bmiCategory: bmiCalc.bmiCategory(userBmi),
-                              steps: null,
-                          ),
-                          );
-                          Navigator.pushNamed(context, HomeScreen.id);
-                        }
-                      }catch(e){
-                        print(e);
+                defaultButton(
+                    height: 40.0,
+                    padding: 0.0,
+                    background: KGreenColor,
+                    text: 'Register',
+                    radius: 35.0,
+                  function: ()async{
+                    // Register success and go to home screen
+                    try {
+                      double userBmi = bmiCalc.calculateYourBmi(weight , height);
+                      final newUser = await _auth
+                          .createUserWithEmailAndPassword(
+                          email: email, password: password);
+                      print('before if $newUser');
+                      if (newUser != null) {
+                        _addUser.addUser(UserData(
+                          firstName : fName ,
+                          lastName: lName ,
+                          gender: select,
+                          yearOfBirth: birthYear,
+                          height: height,
+                          weight: weight,
+                          email: email,
+                          id: _auth.currentUser.uid,
+                          bmi:  userBmi,
+                          bmiCategory: bmiCalc.bmiCategory(userBmi),
+                          steps: null,
+                        ),
+                        );
+                        Navigator.pushNamed(context, HomeScreen.id);
                       }
-                      print( 'name${fName + ' ' + lName}');
-                      print('select $select');
-                      print('birthYear $birthYear');
-                      print('height $height');
-                      print('weight $weight' );
-                      print('email $email');
-                      print('password $password');
-                      print('confirmPass $confirmPass');
+                    }catch(e){
+                      print(e);
+                    }
+                    // print( 'name${fName + ' ' + lName}');
+                    // print('select $select');
+                    // print('birthYear $birthYear');
+                    // print('height $height');
+                    // print('weight $weight' );
+                    // print('email $email');
+                    // print('password $password');
+                    // print('confirmPass $confirmPass');
 
-                    },
-                  ),
+                  },
                 ),
+
               ],
             ),
           ),
